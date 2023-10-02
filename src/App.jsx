@@ -256,7 +256,7 @@ function App() {
           <h3 className="text-lg font-semibold mb-4">
             Historial de transiciones:
           </h3>
-          <ol className="list-decimal list-inside">
+          <ol className="font-mono">
             {transitionHistory.slice(0, currentStep).map((step, idx) => (
               <li key={idx} className="mb-2">
                 {step}
