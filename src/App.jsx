@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import "./index.css";
 
 function App() {
   const [inputValue, setInputValue] = useState("");
@@ -214,9 +215,8 @@ function App() {
     setIsValid(currentState === 13);
     setTransitionHistory(history);
   };
-
-  return (
-    <div
+  /* 
+  <div
       style={{
         display: "flex",
         flexDirection: "column",
@@ -224,28 +224,43 @@ function App() {
         justifyContent: "center",
         height: "100vh",
       }}
-    >
-      <div style={{ width: "50%", textAlign: "center" }}>
-        <p>INGRESA TU MATRICULA</p>
-        <input
-          type="text"
-          value={inputValue}
-          onChange={handleChange}
-          maxLength={13}
-        />
-        <button onClick={handleValidation}>Verificar</button>
+    ></div> */
+
+  return (
+    <div className="min-h-screen flex items-center justify-center bg-gray-200">
+      <div className="w-1/2 text-center bg-white p-8 rounded shadow-lg">
+        <p className="text-xl font-bold mb-4">INGRESA TU MATRICULA</p>
+        <div className="mb-4">
+          <input
+            type="text"
+            value={inputValue}
+            onChange={handleChange}
+            maxLength={13}
+            className="border rounded w-full py-2 px-3 text-gray-700 focus:outline-none focus:border-blue-500"
+          />
+        </div>
+        <button
+          onClick={handleValidation}
+          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mb-4"
+        >
+          Verificar
+        </button>
         {isValid === null ? (
-          <p>Esperando validación...</p>
+          <p className="text-gray-600">Esperando validación...</p>
         ) : isValid ? (
-          <p style={{ color: "green" }}>Válido</p>
+          <p className="text-green-500">Válido</p>
         ) : (
-          <p style={{ color: "red" }}>Inválido</p>
+          <p className="text-red-500">Inválido</p>
         )}
-        <div>
-          <h3>Historial de transiciones:</h3>
-          <ol>
+        <div className="mt-6">
+          <h3 className="text-lg font-semibold mb-4">
+            Historial de transiciones:
+          </h3>
+          <ol className="list-decimal list-inside">
             {transitionHistory.slice(0, currentStep).map((step, idx) => (
-              <li key={idx}>{step}</li>
+              <li key={idx} className="mb-2">
+                {step}
+              </li>
             ))}
           </ol>
         </div>
